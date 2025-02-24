@@ -9,7 +9,7 @@ import io
 app = FastAPI()
 
 # Set OpenAI API key (replace 'YOUR_API_KEY' with your actual API key)
-openai.api_key = "YOUR_API_KEY"
+openai.api_key = "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"
 
 # Define data models for input
 class NoteInput(BaseModel):
@@ -29,10 +29,10 @@ def generate_strict_json(note: str) -> dict:
 
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4-turbo-16k",
+            model="chatgpt-4o-latest",
             messages=[{"role": "system", "content": "You are a helpful assistant that generates complete and accurate JSON responses in English only."},
                       {"role": "user", "content": prompt}],
-            max_tokens=8000,  # Increased to handle large JSON outputs
+            max_tokens=3000,  # Increased token limit to handle longer outputs
             temperature=0,
             n=1,
             stop=None
@@ -87,6 +87,11 @@ async def chat_websocket(websocket: WebSocket):
 @app.post("/generate_code")
 def generate_code():
     pass
+
+@app.post("/apply_update")
+def apply_update():
+    pass
+
 
 @app.post("/apply_update")
 def apply_update():
