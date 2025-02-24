@@ -9,7 +9,7 @@ import io
 app = FastAPI()
 
 # Set OpenAI API key (replace 'YOUR_API_KEY' with your actual API key)
-openai.api_key = "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"
+openai.api_key = "sk...bZtFMA"
 
 # Define data models for input
 class NoteInput(BaseModel):
